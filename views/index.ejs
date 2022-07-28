@@ -1,0 +1,35 @@
+<!-- include Header -->
+<%- include('include/_header')%>
+
+  <!-- Main Site -->
+  <main id="site-main">
+    <div class="container">
+        <div class="box-nav d_flex-justify-between">
+            <a href="/add-command" class="border-shadow">
+                <span class="text-gradient">Đặt lệnh mới <i class="fa-solid fa-money-bill-trend-up"></i></span>
+            </a>
+        </div>
+        <form action="/" method="POST">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Mã</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                        <th>Chiều</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+<%- include('include/_show')%>
+                    
+                </tbody>
+            </table>
+        </form>
+  
+    </div>
+</main>
+
+<!-- include footer -->
+<%- include('include/_footer')%>

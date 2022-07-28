@@ -1,0 +1,17 @@
+<% for(var i=0;i < commands.length;i++){%>
+<tr>
+  <td><%= i + 1 %></td>
+  <td><%= commands[i].code %></td>
+  <td><%= commands[i].amount %></td>
+  <td><%= commands[i].price %></td>
+  <td><%= commands[i].transaction %></td>
+  <td>
+    <a href="/update-command?id=<%= commands[i]._id %>" class="btn border-shadow update">
+      <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+    </a>
+    <a class="btn border-shadow delete" data-id=<%= commands[i]._id %>>
+      <span class="text-gradient"><i class="fas fa-times"></i></span>
+    </a>
+  </td>
+</tr>
+<% } %>
