@@ -1,14 +1,33 @@
+<%var a=Array.apply(null, {length: commands.length}); total = 0;var b; for(var i=0;i < commands.length;i++){%>
+  <% for( var j = i+1; j < commands.length; j++ ) { %>
+    <% if (commands[i].code===commands[j].code) { %>
+     <%  if (commands[i].transaction !== commands[j].transaction) { %>
+      <% if ((commands[i].price >= commands[j].price && commands[i].transaction === 'Buy') || (commands[j].price >= commands[i].price && commands[i].transaction === 'Sell')){%>
+        <% a[i]=Math.min(commands[i].amount,commands[j].amount);
+            a[j] = a[i];
+          commands[i].amount = commands[i].amount - a[i];
+          commands[j].amount = commands[j].amount - a[i];
+          %> 
+      <% } %>
+    <% } %>
+    <% } %> 
+    
+  <% } %>
+<% }  %>
+<!-- .............................................. -->
 <% for(var i=0;i < commands.length;i++){%>
 <tr>
   <td><%= i + 1 %></td>
   <td><%= commands[i].code %></td>
-  <td><%= commands[i].amount %></td>
-  <td><%= commands[i].price %></td>
+  <td><%=commands[i].amount %></td>
+  <td><%=commands[i].price %></td>
   <td><%= commands[i].transaction %></td>
+  <td><%= a[i] %> </td>
+  
   <td>
-    <a href="/update-command?id=<%= commands[i]._id %>" class="btn border-shadow update">
+    <!-- <a href="/update-command?id=<%= commands[i]._id %>" class="btn border-shadow update">
       <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
-    </a>
+    </a> -->
     <a class="btn border-shadow delete" data-id=<%= commands[i]._id %>>
       <span class="text-gradient"><i class="fas fa-times"></i></span>
     </a>
